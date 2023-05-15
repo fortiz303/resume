@@ -1,0 +1,24 @@
+name: Deploy to AWS S3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{AKIAUG5YBD55BUGTWN6R}}
+          aws-secret-access-key: ${{secrets.pRHSdtTXvT7MBHdehmo0U3W+Teo/USNcO+boTqeV}}
+          aws-region: us-west-1
+
+      - name: Deploy website to S3
+        run: |
+          aws s3 sync . s3://mycloudresume23 --acl public-read --delete
