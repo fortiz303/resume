@@ -21,4 +21,4 @@ jobs:
 
       - name: Deploy website to S3
         run: |
-          aws s3 sync . s3://mycloudresume23 --acl public-read --delete
+          aws s3 sync . s3://mycloudresume23 --delete
